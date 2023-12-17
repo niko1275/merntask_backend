@@ -12,19 +12,18 @@ dotenv.config();
 connectDB();
 
 //Configurar Cors
-const whilelist = [process.env.FRONTEND_URL];
-const corsOptions = {
-    origin: function(origin,callback){
-        console.log(origin)
-        if(whilelist.includes(origin)){
-            callback(null,true);
-        }else{
-            callback(new Error("Error de Cors"));
 
+const whitelist = [process.env.FRONTEND_URL];
+const corsOptions = {
+    origin: function(origin, callback) {
+        console.log(origin);
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error("Error de Cors"));
         }
     }
 }
-
 app.use(cors(corsOptions));
 
 //Routing 
