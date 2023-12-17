@@ -9,8 +9,7 @@ const checkAuth = async (req,res,next)=>{
         try{
            
             token=req.headers.authorization.split(" ")[1];
-            console.log(token)
-
+        
             if(!token || token === 'null') {
                 const error = new Error("Token No valido");
                 return res.status(401).json({msg:error.message});
